@@ -8,23 +8,26 @@
 </head>
 <body>
 
-  <header>
-    <h1>IT Support Knowledge Base</h1>
-    <p>Quick troubleshooting guides for common IT issues</p>
+  <header class="hero">
+    <div class="hero-content">
+      <h1>IT Support Knowledge Base</h1>
+      <p>Quick troubleshooting guides for common IT issues</p>
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="Search troubleshooting guides..."
-    >
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search troubleshooting guides..."
+        aria-label="Search troubleshooting guides"
+      >
+    </div>
   </header>
 
-  <main>
+  <main class="container">
 
     <section class="categories">
 
       <article class="card">
-        <h2>Windows</h2>
+        <h2>💻 Windows</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="slow-computer">
@@ -45,7 +48,7 @@
       </article>
 
       <article class="card">
-        <h2>Microsoft 365</h2>
+        <h2>📧 Microsoft 365</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="outlook-not-opening">
@@ -66,7 +69,7 @@
       </article>
 
       <article class="card">
-        <h2>Network</h2>
+        <h2>🌐 Network</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="no-internet">
@@ -87,7 +90,7 @@
       </article>
 
       <article class="card">
-        <h2>Printers</h2>
+        <h2>🖨️ Printers</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="printer-offline">
@@ -108,7 +111,7 @@
       </article>
 
       <article class="card">
-        <h2>User Accounts</h2>
+        <h2>👤 User Accounts</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="password-reset">
@@ -129,7 +132,7 @@
       </article>
 
       <article class="card">
-        <h2>Hardware</h2>
+        <h2>🖥️ Hardware</h2>
         <ul>
           <li>
             <button class="guide-btn" data-guide="keyboard-not-working">
@@ -152,11 +155,15 @@
     </section>
 
     <section id="guidePanel" class="guide-panel hidden">
-      <button id="closeGuide">Close</button>
+      <button id="closeGuide" type="button">Close</button>
       <div id="guideContent"></div>
     </section>
 
   </main>
+
+  <footer>
+    <p>Built with HTML, CSS and JavaScript</p>
+  </footer>
 
   <script src="script.js"></script>
 
