@@ -60,14 +60,25 @@
       </article>
 
       <article class="card">
-        <h2>User Accounts</h2>
-        <ul>
-          <li>Password reset</li>
-          <li>Account locked</li>
-          <li>Unable to sign in</li>
-        </ul>
-      </article>
-
+  <h2>User Accounts</h2>
+  <ul>
+    <li>
+      <button class="guide-btn" data-guide="password-reset">
+        Password reset
+      </button>
+    </li>
+    <li>
+      <button class="guide-btn" data-guide="account-locked">
+        Account locked
+      </button>
+    </li>
+    <li>
+      <button class="guide-btn" data-guide="sign-in">
+        Unable to sign in
+      </button>
+    </li>
+  </ul>
+</article>
       <article class="card">
         <h2>Hardware</h2>
         <ul>
@@ -78,7 +89,11 @@
       </article>
 
     </section>
-
+<section id="guidePanel" class="guide-panel hidden">
+  <button id="closeGuide">Close</button>
+  <div id="guideContent"></div>
+</section>
+    
   </main>
 
   <script src="script.js"></script>
