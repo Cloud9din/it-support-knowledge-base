@@ -4,71 +4,88 @@
   padding: 0;
 }
 
+:root {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --text: #172033;
+  --muted: #6b7280;
+  --border: #e5e7eb;
+  --accent: #2563eb;
+  --accent-soft: #eff6ff;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+}
+
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
-  color: #1f2937;
+  background: var(--bg);
+  color: var(--text);
   line-height: 1.6;
 }
 
 header {
-  background: #ffffff;
+  background: linear-gradient(135deg, #111827, #1f3b68);
+  color: #ffffff;
   text-align: center;
-  padding: 40px 20px;
-  border-bottom: 1px solid #dcdfe4;
+  padding: 55px 20px;
 }
 
 header h1 {
-  font-size: 34px;
+  font-size: 38px;
   margin-bottom: 10px;
 }
 
 header p {
-  color: #6b7280;
-  margin-bottom: 20px;
+  color: #d1d5db;
+  margin-bottom: 24px;
+  font-size: 17px;
 }
 
 #searchInput {
   width: 100%;
-  max-width: 600px;
-  padding: 13px 15px;
-  border: 1px solid #cfd4da;
-  border-radius: 8px;
+  max-width: 620px;
+  padding: 15px 18px;
+  border: none;
+  border-radius: 10px;
   font-size: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 #searchInput:focus {
-  outline: none;
-  border-color: #6b7280;
+  outline: 3px solid rgba(255, 255, 255, 0.25);
 }
 
 main {
   width: 92%;
-  max-width: 1100px;
-  margin: 35px auto;
+  max-width: 1120px;
+  margin: 40px auto;
 }
 
 .categories {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
+  gap: 24px;
 }
 
 .card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 24px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--surface);
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: var(--shadow);
+  border: 1px solid transparent;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.12);
+  border-color: #dbeafe;
 }
 
 .card h2 {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   font-size: 22px;
 }
 
@@ -77,8 +94,8 @@ main {
 }
 
 .card li {
-  padding: 9px 0;
-  border-bottom: 1px solid #eeeeee;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 .card li:last-child {
@@ -93,23 +110,37 @@ main {
   font-size: 16px;
   cursor: pointer;
   text-align: left;
-  color: #1f2937;
+  color: var(--text);
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .guide-btn:hover {
-  text-decoration: underline;
+  color: var(--accent);
+  transform: translateX(4px);
+}
+
+.guide-btn::before {
+  content: "›";
+  color: var(--accent);
+  margin-right: 8px;
+  font-weight: bold;
 }
 
 .guide-panel {
-  margin-top: 30px;
-  background: #ffffff;
-  padding: 28px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  margin-top: 32px;
+  background: var(--surface);
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  border-left: 5px solid var(--accent);
+  animation: fadeIn 0.3s ease;
 }
 
 .guide-panel h2 {
-  margin-bottom: 15px;
+  margin-bottom: 18px;
+  color: var(--accent);
 }
 
 .guide-panel ol {
@@ -117,20 +148,21 @@ main {
 }
 
 .guide-panel li {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 #closeGuide {
   float: right;
-  padding: 8px 12px;
-  border: 1px solid #cfd4da;
+  padding: 9px 14px;
+  border: 1px solid var(--border);
   background: #ffffff;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background 0.2s ease;
 }
 
 #closeGuide:hover {
-  background: #f0f2f4;
+  background: #f3f4f6;
 }
 
 .hidden {
@@ -140,8 +172,23 @@ main {
 .no-results {
   grid-column: 1 / -1;
   text-align: center;
-  color: #6b7280;
-  padding: 30px;
+  color: var(--muted);
+  padding: 35px;
+  background: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 900px) {
@@ -151,15 +198,19 @@ main {
 }
 
 @media (max-width: 600px) {
+  header {
+    padding: 42px 18px;
+  }
+
+  header h1 {
+    font-size: 30px;
+  }
+
   .categories {
     grid-template-columns: 1fr;
   }
 
-  header h1 {
-    font-size: 28px;
-  }
-
   .guide-panel {
-    padding: 20px;
+    padding: 22px;
   }
 }
