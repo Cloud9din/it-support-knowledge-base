@@ -5,38 +5,49 @@
 }
 
 :root {
-  --bg: #f4f7fb;
+  --background: #f4f7fb;
   --surface: #ffffff;
   --text: #172033;
   --muted: #6b7280;
   --border: #e5e7eb;
+  --navy: #172b4d;
+  --navy-light: #24436f;
   --accent: #2563eb;
   --accent-soft: #eff6ff;
   --shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background: var(--bg);
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
   color: var(--text);
   line-height: 1.6;
 }
 
-header {
-  background: linear-gradient(135deg, #111827, #1f3b68);
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--navy),
+    var(--navy-light)
+  );
   color: #ffffff;
-  text-align: center;
   padding: 55px 20px;
 }
 
-header h1 {
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero h1 {
   font-size: 38px;
   margin-bottom: 10px;
 }
 
-header p {
-  color: #d1d5db;
-  margin-bottom: 24px;
+.hero p {
+  color: #dce4ef;
+  margin-bottom: 25px;
   font-size: 17px;
 }
 
@@ -47,14 +58,15 @@ header p {
   border: none;
   border-radius: 10px;
   font-size: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 #searchInput:focus {
-  outline: 3px solid rgba(255, 255, 255, 0.25);
+  outline: 3px solid rgba(255, 255, 255, 0.3);
 }
 
-main {
+.container {
   width: 92%;
   max-width: 1120px;
   margin: 40px auto;
@@ -94,7 +106,6 @@ main {
 }
 
 .card li {
-  padding: 10px 0;
   border-bottom: 1px solid var(--border);
 }
 
@@ -106,7 +117,7 @@ main {
   width: 100%;
   background: none;
   border: none;
-  padding: 0;
+  padding: 11px 0;
   font-size: 16px;
   cursor: pointer;
   text-align: left;
@@ -116,31 +127,33 @@ main {
     transform 0.2s ease;
 }
 
+.guide-btn::before {
+  content: "›";
+  color: var(--accent);
+  margin-right: 10px;
+  font-weight: bold;
+}
+
 .guide-btn:hover {
   color: var(--accent);
   transform: translateX(4px);
 }
 
-.guide-btn::before {
-  content: "›";
-  color: var(--accent);
-  margin-right: 8px;
-  font-weight: bold;
-}
-
 .guide-panel {
+  position: relative;
   margin-top: 32px;
   background: var(--surface);
-  padding: 30px;
+  padding: 32px;
   border-radius: 16px;
-  box-shadow: var(--shadow);
   border-left: 5px solid var(--accent);
+  box-shadow: var(--shadow);
   animation: fadeIn 0.3s ease;
 }
 
 .guide-panel h2 {
-  margin-bottom: 18px;
   color: var(--accent);
+  margin-bottom: 18px;
+  padding-right: 100px;
 }
 
 .guide-panel ol {
@@ -152,17 +165,24 @@ main {
 }
 
 #closeGuide {
-  float: right;
-  padding: 9px 14px;
-  border: 1px solid var(--border);
-  background: #ffffff;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  padding: 9px 15px;
+  border: none;
+  background: #1f2937;
+  color: #ffffff;
   border-radius: 8px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  font-weight: 600;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 #closeGuide:hover {
-  background: #f3f4f6;
+  background: var(--accent);
+  transform: translateY(-1px);
 }
 
 .hidden {
@@ -172,17 +192,25 @@ main {
 .no-results {
   grid-column: 1 / -1;
   text-align: center;
+  background: var(--surface);
   color: var(--muted);
   padding: 35px;
-  background: var(--surface);
   border-radius: 12px;
   box-shadow: var(--shadow);
+}
+
+footer {
+  text-align: center;
+  padding: 25px 20px;
+  margin-top: 50px;
+  color: var(--muted);
+  font-size: 14px;
 }
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
 
   to {
@@ -198,11 +226,11 @@ main {
 }
 
 @media (max-width: 600px) {
-  header {
+  .hero {
     padding: 42px 18px;
   }
 
-  header h1 {
+  .hero h1 {
     font-size: 30px;
   }
 
@@ -211,6 +239,16 @@ main {
   }
 
   .guide-panel {
-    padding: 22px;
+    padding: 24px;
+  }
+
+  .guide-panel h2 {
+    padding-right: 0;
+    margin-top: 45px;
+  }
+
+  #closeGuide {
+    top: 18px;
+    right: 18px;
   }
 }
