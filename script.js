@@ -10,9 +10,9 @@ const guides = {
   "slow-computer": `
     <h2>Slow Computer</h2>
     <ol>
-      <li>Check Task Manager for high CPU, memory or disk usage.</li>
+      <li>Open Task Manager and check CPU, memory and disk usage.</li>
       <li>Close unnecessary applications and browser tabs.</li>
-      <li>Check available disk space.</li>
+      <li>Check that the computer has enough free disk space.</li>
       <li>Restart the computer if it has been running for a long time.</li>
       <li>Check for pending Windows updates.</li>
       <li>Escalate if performance remains poor.</li>
@@ -22,10 +22,10 @@ const guides = {
   "windows-update": `
     <h2>Windows Update Issues</h2>
     <ol>
-      <li>Confirm the device has an internet connection.</li>
+      <li>Confirm that the computer has an internet connection.</li>
       <li>Open Settings and check Windows Update.</li>
       <li>Restart the computer and try again.</li>
-      <li>Check whether there is enough free disk space.</li>
+      <li>Check that there is enough free disk space.</li>
       <li>Run the Windows Update troubleshooter if available.</li>
       <li>Escalate persistent update failures.</li>
     </ol>
@@ -39,18 +39,18 @@ const guides = {
       <li>End the task if it remains unresponsive.</li>
       <li>Restart the application.</li>
       <li>Restart the computer if the problem continues.</li>
-      <li>Check for application updates or escalate if needed.</li>
+      <li>Check for application updates or escalate if necessary.</li>
     </ol>
   `,
 
   "outlook-not-opening": `
     <h2>Outlook Not Opening</h2>
     <ol>
-      <li>Confirm the user has an internet connection.</li>
+      <li>Confirm the computer has an internet connection.</li>
       <li>Close Outlook completely and reopen it.</li>
       <li>Restart the computer.</li>
-      <li>Check whether Microsoft 365 is working in the browser.</li>
-      <li>Check for Office updates.</li>
+      <li>Try Microsoft 365 in a web browser.</li>
+      <li>Check for Microsoft Office updates.</li>
       <li>Escalate if Outlook still does not open.</li>
     </ol>
   `,
@@ -59,10 +59,10 @@ const guides = {
     <h2>Cannot Send Email</h2>
     <ol>
       <li>Check the internet connection.</li>
-      <li>Confirm the recipient email address is correct.</li>
+      <li>Confirm the recipient's email address is correct.</li>
       <li>Check the Outbox for stuck messages.</li>
       <li>Check whether the mailbox is full.</li>
-      <li>Try sending from Outlook on the web.</li>
+      <li>Try sending the message through Outlook on the web.</li>
       <li>Escalate if the issue continues.</li>
     </ol>
   `,
@@ -73,9 +73,9 @@ const guides = {
       <li>Confirm the username and password are correct.</li>
       <li>Check the internet connection.</li>
       <li>Close and reopen Microsoft Teams.</li>
-      <li>Try signing in through the browser.</li>
+      <li>Try signing in using the browser version.</li>
       <li>Restart the computer.</li>
-      <li>Escalate if the account still cannot sign in.</li>
+      <li>Escalate if the user still cannot sign in.</li>
     </ol>
   `,
 
@@ -85,7 +85,7 @@ const guides = {
       <li>Check whether Wi-Fi or Ethernet is connected.</li>
       <li>Check whether other websites or services are working.</li>
       <li>Run ipconfig to review network information.</li>
-      <li>Ping a known address to test connectivity.</li>
+      <li>Use ping to test connectivity.</li>
       <li>Restart the network adapter or reconnect to Wi-Fi.</li>
       <li>Escalate if the connection remains unavailable.</li>
     </ol>
@@ -109,9 +109,9 @@ const guides = {
       <li>Open Command Prompt.</li>
       <li>Run ipconfig /all.</li>
       <li>Check the IPv4 address, gateway and DNS information.</li>
-      <li>Look for a 169.254.x.x address, which may indicate a DHCP problem.</li>
-      <li>Try ipconfig /release followed by ipconfig /renew where appropriate.</li>
-      <li>Escalate if a valid address cannot be obtained.</li>
+      <li>Look for a 169.254.x.x address, which may indicate a DHCP issue.</li>
+      <li>Use ipconfig /release and ipconfig /renew where appropriate.</li>
+      <li>Escalate if a valid network address cannot be obtained.</li>
     </ol>
   `,
 
@@ -120,7 +120,7 @@ const guides = {
     <ol>
       <li>Check that the printer is powered on.</li>
       <li>Check USB, network or Wi-Fi connectivity.</li>
-      <li>Confirm the correct printer is selected.</li>
+      <li>Confirm that the correct printer is selected.</li>
       <li>Check the printer queue.</li>
       <li>Restart the printer and computer.</li>
       <li>Escalate if the printer remains offline.</li>
@@ -135,7 +135,7 @@ const guides = {
       <li>Try printing a new test document.</li>
       <li>Restart the Print Spooler service if permitted.</li>
       <li>Restart the printer.</li>
-      <li>Escalate if jobs continue to remain stuck.</li>
+      <li>Escalate if print jobs continue to remain stuck.</li>
     </ol>
   `,
 
@@ -155,7 +155,7 @@ const guides = {
     <h2>Password Reset</h2>
     <ol>
       <li>Confirm the user's identity before making account changes.</li>
-      <li>Check that the account is active.</li>
+      <li>Check that the account is active and not disabled.</li>
       <li>Use the approved password reset process.</li>
       <li>Ask the user to create a strong new password.</li>
       <li>Confirm the user can sign in successfully.</li>
@@ -167,7 +167,7 @@ const guides = {
     <ol>
       <li>Confirm the user's identity.</li>
       <li>Check whether the account is locked.</li>
-      <li>Unlock it using the approved support process.</li>
+      <li>Unlock the account using the approved support process.</li>
       <li>Check for repeated failed login attempts.</li>
       <li>Confirm the user can sign in again.</li>
     </ol>
@@ -215,7 +215,7 @@ const guides = {
       <li>Try another USB port.</li>
       <li>Restart the computer.</li>
       <li>Check Device Manager for errors.</li>
-      <li>Test the USB device on another computer if possible.</li>
+      <li>Test the device on another computer if possible.</li>
       <li>Escalate if the device continues to fail.</li>
     </ol>
   `
@@ -256,15 +256,17 @@ guideButtons.forEach(button => {
   button.addEventListener("click", function () {
     const guideName = button.dataset.guide;
 
-    if (guides[guideName]) {
-      guideContent.innerHTML = guides[guideName];
-      guidePanel.classList.remove("hidden");
-
-      guidePanel.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
+    if (!guides[guideName]) {
+      return;
     }
+
+    guideContent.innerHTML = guides[guideName];
+    guidePanel.classList.remove("hidden");
+
+    guidePanel.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
   });
 });
 
